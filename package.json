@@ -1,11 +1,30 @@
 {
   "name": "jsgen",
   "version": "1.0.0",
-  "description": "",
+  "description": "A library for creating JavaScript object generator factories",
   "main": "JSGen.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niole/JSGen.git"
+  },
+  "keywords": [
+    "testing",
+    "generator",
+    "object",
+    "javascript"
+  ],
+  "bugs": {
+    "url": "https://github.com/niole/JSGen/issues"
+  },
+  "homepage": "https://github.com/niole/JSGen#readme",
+  "dependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "randomstring": "^1.1.5"
+  }
 }

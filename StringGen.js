@@ -1,19 +1,18 @@
+const randomstring = require('randomstring');
 const { initEnum } = require('./util.js');
+
 
 const generator = {
   Length: length => {
     // TODO
     return {
-      Next: () => new Array(length).fill('a').join(''),
+      Next: () => randomstring.generate(length),
     };
   },
 
   Enum: initEnum('string'),
 
-  Next: () => {
-    // TODO get random string generator
-    return 'randomstring';
-  },
+  Next: () => randomstring.generate(),
 };
 
 
