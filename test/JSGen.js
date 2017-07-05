@@ -216,3 +216,26 @@ describe('Array generator', function() {
   });
 
 });
+
+describe('Object generator', function() {
+  it('can create objects', function() {
+    const o = Object();
+    const output = o.Next();
+    assert.isObject(output, "should be an object");
+  });
+
+  it('can create nested objects', function() {
+    const o = Object()
+      .Key('x').Value(Boolean())
+      .Key('y').Value(Number(9))
+      .Key('z').Value(Array(String()).Length(3)).Next();
+
+    assert.isBoolean(o.x, "x attribute is boolean");
+    assert.isNumber(o.y, "y attribute is number");
+    assert.strictEqual(o.y, 9, "y attribute is 9");
+    assert.isArray(o.z, "z attribute is an array");
+    assert.equal(o.z.length, 3, "z attribute is an array of length 3");
+    assert.isString(o.z[0], "elements of z attribute are strings");
+
+  });
+});
