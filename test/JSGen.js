@@ -190,4 +190,29 @@ describe('Array generator', function() {
     });
   });
 
+  it('should be able to generate matrices', function() {
+    const innerArray = Array(Number());
+    const outerArray = Array(innerArray);
+    const output = outerArray.Next();
+    assert.isArray(output[0], "elements should be arrays");
+  });
+
+  it('should be able to generate arrays of objects', function() {
+    const o = Object()
+      .Key('x').Value(Boolean())
+      .Key('y').Value(Number(9))
+      .Key('z').Value(Array(String()).Length(3));
+
+    const outer = Array(o);
+    const output = outer.Next();
+
+    assert.isObject(output[0], "should contain objects");
+    assert.isBoolean(output[0].x, "x attribute is boolean");
+    assert.isNumber(output[0].y, "y attribute is number");
+    assert.strictEqual(output[0].y, 9, "y attribute is 9");
+    assert.isArray(output[0].z, "z attribute is an array");
+    assert.equal(output[0].z.length, 3, "z attribute is an array of length 3");
+    assert.isString(output[0].z[0], "elements of z attribute are strings");
+  });
+
 });
