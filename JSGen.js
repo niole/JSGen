@@ -2,6 +2,7 @@ const NumberGen = require('./NumberGen.js');
 const StringGen = require('./StringGen.js');
 const BooleanGen = require('./BooleanGen.js');
 const ArrayGen = require('./ArrayGen.js');
+const ObjectGen = require('./ObjectGen.js');
 
 
 const JSGen = {
@@ -9,8 +10,7 @@ const JSGen = {
 
   String: StringGen,
 
-  Object: () => {
-  },
+  Object: ObjectGen,
 
   Number: NumberGen,
 
