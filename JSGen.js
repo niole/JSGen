@@ -1,11 +1,11 @@
 const NumberGen = require('./NumberGen.js');
 const StringGen = require('./StringGen.js');
 const BooleanGen = require('./BooleanGen.js');
+const ArrayGen = require('./ArrayGen.js');
 
 
 const JSGen = {
-  Array: () => {
-  },
+  Array: ArrayGen,
 
   String: StringGen,
 

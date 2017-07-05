@@ -1,6 +1,7 @@
 const {
   positive,
   negative,
+  initEnum,
 } = require('./util.js');
 
 function number(only = null) {
@@ -15,6 +16,8 @@ function number(only = null) {
 
 
 const generator = {
+  Enum: initEnum('number'),
+
   Range: (start, end) => {
     const range = end - start;
     return {
