@@ -116,3 +116,78 @@ describe('Number generator', function() {
     });
   });
 });
+
+describe('Array generator', function() {
+  it('should generate Number[]', function() {
+    const a = Array(Number());
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      if (A.length) {
+        assert.isNumber(A[0], "if not empty, should contain Numbers");
+      }
+    });
+  });
+
+  it('should generate array of same number if specified', function() {
+    const n = 300;
+    const a = Array(Number(n));
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      if (A.length) {
+        const found = A.find(e => e !== n);
+        assert.isNotOk(found, `all elements should equal ${n}`);
+      }
+    });
+  });
+
+  it('should generate String[]', function() {
+    const a = Array(String());
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      if (A.length) {
+        assert.isString(A[0], "if not empty, should contain strings");
+      }
+    });
+  });
+
+  it('should generate same string if specified', function() {
+    const s = 'loopdeloop';
+    const a = Array(String(s));
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      if (A.length) {
+        const found = A.find(e => e !== s);
+        assert.isNotOk(found, `all elements should equal ${s}`);
+      }
+    });
+  });
+
+  it('should generate Boolean[]', function() {
+    const a = Array(Boolean());
+    assertMany(100, () => {
+      const B = a.Next();
+      assert.isArray(B, "should be an array")
+      if (B.length) {
+        assert.isBoolean(B[0], "if not empty, should contain booleans");
+      }
+    });
+  });
+
+  it('should generate same boolean if specified', function() {
+    const b = false;
+    const a = Array(Boolean(b));
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      if (A.length) {
+        const found = A.find(e => e !== b);
+        assert.isNotOk(found, `all elements should equal ${b}`);
+      }
+    });
+  });
+
+});
