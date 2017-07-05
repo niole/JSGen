@@ -1,7 +1,6 @@
 const { initEnum } = require('./util.js');
 
-
-module.exports = {
+const generator = {
   Length: length => {
     // TODO
     return {
@@ -16,3 +15,15 @@ module.exports = {
     return 'randomstring';
   },
 };
+
+
+function string(only = null) {
+  if (only === null) {
+    return generator;
+  }
+  return {
+    Next: () => only,
+  };
+}
+
+module.exports = string;

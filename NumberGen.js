@@ -3,7 +3,18 @@ const {
   negative,
 } = require('./util.js');
 
-module.exports = {
+function number(only = null) {
+  if (only === null) {
+    // number can be limited to a range, or no range
+    return generator;
+  }
+  return {
+    Next: () => only,
+  };
+}
+
+
+const generator = {
   Range: (start, end) => {
     const range = end - start;
     return {
@@ -30,3 +41,5 @@ module.exports = {
     return negative();
   }
 };
+
+module.exports = number;

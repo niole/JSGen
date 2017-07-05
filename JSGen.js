@@ -1,57 +1,20 @@
-const StringGen = require('./StringGen.js');
 const NumberGen = require('./NumberGen.js');
-const { getRandomIndex } = require('./util.js');
+const StringGen = require('./StringGen.js');
+const BooleanGen = require('./BooleanGen.js');
 
-
-function number(only = null) {
-  if (only === null) {
-    // number can be limited to a range, or no range
-    return NumberGen;
-  }
-  return {
-    Next: () => only,
-  };
-}
-
-function bool(only = null) {
-  const bools = [true, false];
-  if (only === null) {
-    return {
-      Next: () => bools[getRandomIndex(bools.length)],
-    };
-  }
-  return {
-    Next: () => only,
-  };
-}
-
-function string(only = null) {
-  if (only === null) {
-    return StringGen;
-  }
-  return {
-    Next: () => only,
-  };
-}
 
 const JSGen = {
   Array: () => {
   },
 
-  String: string,
+  String: StringGen,
 
   Object: () => {
   },
 
-  Number: number,
+  Number: NumberGen,
 
-  Boolean: bool,
-
-  Length: () => {
-  },
-
-  Enum: () => {
-  }
+  Boolean: BooleanGen,
 
 };
 
