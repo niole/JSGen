@@ -118,6 +118,18 @@ describe('Number generator', function() {
 });
 
 describe('Array generator', function() {
+  it('should generate set arraays', function() {
+    const a = Array([Number(), String()]);
+
+    assertMany(100, () => {
+      const A = a.Next();
+      assert.isArray(A, "should be an array")
+      assert.equal(A.length, 2, "lenght should be 2");
+      assert.isNumber(A[0], "should be a number");
+      assert.isString(A[1], "should be a string");
+    });
+  });
+
   it('should generate Number[]', function() {
     const a = Array(Number());
     assertMany(100, () => {

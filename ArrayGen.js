@@ -17,6 +17,10 @@ function array(child) {
     },
 
     Next: () => {
+      if (!child.Next) {
+        return child.map(c => c.Next());
+      }
+
       const randomLength = getRandomIndex(upperBound + 1);
       return populateArray(child, randomLength);
     },
